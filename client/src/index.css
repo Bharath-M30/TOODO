@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .hero-gradient{
+    background-image: linear-gradient(to right,#1E1E1E 11%, #222222 38%, #2D2D2D 79%, #272727 95% );
+  }
+
+  .transform-mobile{
+    transform: scale(0.85);
+  }
+}
