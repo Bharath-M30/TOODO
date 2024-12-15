@@ -20,6 +20,7 @@ const corsOptions = {
     credentials: true
   };
 
+app.get("/", (req,res) => res.send("Server is running"));
 
 //middlewares
 app.use(express.json());
@@ -32,6 +33,4 @@ app.use('/signin', signinRoute);
 app.use('/signup', signupRoute);
 app.use('/users/tasks', taskRoute);
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-})
+module.exports = app
