@@ -16,7 +16,7 @@ export default function Task({title, status, id, isLoggedIn, updateDemoTask, del
             );
             setDbTasks(updatedTasks);
 
-            const result = await axios.put(`${apiUrl}/users/tasks`, { id, status });
+            const result = await axios.put(`${apiUrl}/users/tasks`, { id, status }, {withCredentials:true});
             console.log(result);
  
             if (result.status === 200) {
@@ -37,7 +37,7 @@ export default function Task({title, status, id, isLoggedIn, updateDemoTask, del
             const updatedTasks = dbTasks.filter((task) => task.id !== id);
             setDbTasks(updatedTasks);
 
-            const result = await axios.delete(`${apiUrl}/users/tasks`, { data: {id} });
+            const result = await axios.delete(`${apiUrl}/users/tasks`, { data: {id} }, {withCredentials:true});
             console.log(result.data);
         } catch (error) {
             console.error(error);

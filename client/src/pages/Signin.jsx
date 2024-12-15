@@ -54,7 +54,7 @@ export default function Signin() {
     }
 
     try {
-      const result = await axios.post(`${apiUrl}/signin`, user);
+      const result = await axios.post(`${apiUrl}/signin`, user, {withCredentials:true});
       console.log(result);
       if(result.request.status == 200){
         console.log(user)

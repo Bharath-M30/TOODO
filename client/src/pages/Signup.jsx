@@ -60,7 +60,7 @@ export default function Signup() {
 
     //send to server
     try {
-      const result = await axios.post(`${apiUrl}/signup`, user);
+      const result = await axios.post(`${apiUrl}/signup`, user, {withCredentials:true});
       console.log(result);
       if (result.status == 201) {
         setUser({username: "",email:"", password: ""});
