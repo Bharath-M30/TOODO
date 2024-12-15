@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 
 export default function Home() {
 
+    const apiUrl = import.meta.env.VITE_API_URL ;
+
     const {user,setUser, isLoggedIn, setIsLoggedIn, dbTasks, setDbTasks, taskTitle, setTaskTitle, taskStatus, setTaskStatus,demoTasksArray, setDemoTasksArray,demoTaskTitle,setDemoTaskTitle ,demoTaskStatus, setDemoTaskStatus} = useContext(TodoContext);
     const {username} = useParams();
 
@@ -13,7 +15,7 @@ export default function Home() {
         async function getTasks(){
             try {
                 if(username){
-                    const taskUser = await axios.post(`http://localhost:3000/users/tasks`, user);
+                    const taskUser = await axios.post(`${apiUrl}/users/tasks`, user);
                     setDbTasks(taskUser.data.tasks);
                 }
             } catch (error) {
@@ -25,7 +27,7 @@ export default function Home() {
 
     async function refreshTasks() {
         try {
-            const refreshedTasks = await axios.post(`http://localhost:3000/users/tasks`, user);
+            const refreshedTasks = await axios.post(`${apiUrl}/users/tasks`, user);
             setDbTasks(refreshedTasks.data.tasks);
         } catch (error) {
             console.error(error);
@@ -44,7 +46,7 @@ export default function Home() {
         if(isLoggedIn){
             try {
                 
-                const result = await axios.post(`http://localhost:3000/users/tasks/${username}`, {title: taskTitle,status: taskStatus, username:user.username});
+                const result = await axios.post(`${apiUrl}/users/tasks/${username}`, {title: taskTitle,status: taskStatus, username:user.username});
                 console.log(result);
     
                 if(result.status == 201){

@@ -4,6 +4,7 @@ import { TodoContext } from "../context/TodoContext";
 import axios from "axios";
 
 export default function Signin() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const location = useLocation();
   const [errors, setErrors] = useState({});
@@ -53,7 +54,7 @@ export default function Signin() {
     }
 
     try {
-      const result = await axios.post("http://localhost:3000/signin", user);
+      const result = await axios.post(`${apiUrl}/signin`, user);
       console.log(result);
       if(result.request.status == 200){
         console.log(user)

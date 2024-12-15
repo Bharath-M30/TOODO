@@ -5,6 +5,7 @@ import axios from "axios";
 
 
 export default function Signup() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [errors, setErrors] = useState({});
   const [signUpMessage, setSignUpMessage] = useState("");
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ export default function Signup() {
 
     //send to server
     try {
-      const result = await axios.post(`http://localhost:3000/signup`, user);
+      const result = await axios.post(`${apiUrl}/signup`, user);
       console.log(result);
       if (result.status == 201) {
         setUser({username: "",email:"", password: ""});

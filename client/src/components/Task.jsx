@@ -6,7 +6,8 @@ import axios from "axios";
 
 export default function Task({title, status, id, isLoggedIn, updateDemoTask, deleteDemoTask}) {
 
-    const {taskStatus, setTaskStatus, dbTasks, setDbTasks} = useContext(TodoContext);
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const {dbTasks, setDbTasks} = useContext(TodoContext);
 
     async function updateTask(id, status) {
         try {
@@ -15,7 +16,7 @@ export default function Task({title, status, id, isLoggedIn, updateDemoTask, del
             );
             setDbTasks(updatedTasks);
 
-            const result = await axios.put(`http://localhost:3000/users/tasks`, { id, status });
+            const result = await axios.put(`${apiUrl}/users/tasks`, { id, status });
             console.log(result);
  
             if (result.status === 200) {
@@ -36,7 +37,7 @@ export default function Task({title, status, id, isLoggedIn, updateDemoTask, del
             const updatedTasks = dbTasks.filter((task) => task.id !== id);
             setDbTasks(updatedTasks);
 
-            const result = await axios.delete(`http://localhost:3000/users/tasks`, { data: {id} });
+            const result = await axios.delete(`${apiUrl}/users/tasks`, { data: {id} });
             console.log(result.data);
         } catch (error) {
             console.error(error);
