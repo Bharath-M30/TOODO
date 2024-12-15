@@ -14,7 +14,7 @@ dbConnect();
 
 //cors
 const corsOptions = {
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL || "https://toodo-mha1nqeki-bharath-ms-projects.vercel.app",
     methods: 'GET,POST,PUT,PATCH,DELETE', 
     allowedHeaders: ['Content-Type', 'Authorization'], 
     credentials: true
