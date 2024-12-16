@@ -72,7 +72,7 @@ export default function Signin() {
 
   return (
     <div className="min-h-screen hero-gradient flex justify-center items-center">
-      <form onSubmit={handleSubmit} className="px-16 py-8 min-w-80 min-[650px]:min-w-96 text-[#B937FF] bg-[#1E1E1E] border-[#101010] border-2 rounded-xl flex flex-col gap-8 justify-center items-center">
+      <form onSubmit={handleSubmit} className="px-8 py-8 min-w-80 min-[650px]:min-w-96 text-[#B937FF] bg-[#1E1E1E] border-[#101010] border-2 rounded-xl flex flex-col gap-8 justify-center items-center">
         <h3 className="text-3xl font-bold">Sign In</h3>
         <div className="text-left min-w-full">
           <label className="block left-0 mb-2" htmlFor="username">
