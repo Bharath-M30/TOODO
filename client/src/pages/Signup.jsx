@@ -8,6 +8,7 @@ export default function Signup() {
   const apiUrl = import.meta.env.VITE_API_URL || "https://toodo-backend.onrender.com";
   const [errors, setErrors] = useState({});
   const [signUpMessage, setSignUpMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, setUser } = useContext(TodoContext);
@@ -49,6 +50,7 @@ export default function Signup() {
 
   async function handleSignup(event) {
     event.preventDefault();
+    setIsLoading(true)
     const formErrors = validate();
 
     if (Object.keys(formErrors).length > 0) {
@@ -75,6 +77,8 @@ export default function Signup() {
         ...prevErrors,
         message: error.response.data.message,
       }));
+    } finally{
+      setIsLoading(false);
     }
   }
 
@@ -140,7 +144,7 @@ export default function Signup() {
 
         {signUpMessage == "Account created successfully!" && <p className="text-xs text-green-600">{signUpMessage}</p>}
 
-        <button className="bg-[#B937FF] py-2 px-8 text-white rounded-full focus:outline-[#B937FF]">
+        <button disabled={isLoading} className={`${isLoading ? "opacity-50" : ""} bg-[#B937FF] py-2 px-8 text-white rounded-full focus:outline-[#B937FF]`}>
           Sign Up
         </button>
 

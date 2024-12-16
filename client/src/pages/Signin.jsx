@@ -9,6 +9,7 @@ export default function Signin() {
   const location = useLocation();
   const [errors, setErrors] = useState({});
   const [signInMessage, setSignInMessage] = useState(""); 
+  const [isLoading, setIsLoading] = useState(false);
   const {user, setUser, isLoggedIn, setIsLoggedIn} = useContext(TodoContext);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Signin() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    setIsLoading(true);
     const formErrors = validate();
 
     if (Object.keys(formErrors).length > 0) {
@@ -66,6 +67,8 @@ export default function Signin() {
       }
     } catch (error) {
       console.error(error);
+    }finally{
+      setIsLoading(false);
     }
 
   }
@@ -111,7 +114,7 @@ export default function Signin() {
           )}
         </div>
 
-        <button className="bg-[#B937FF] py-2 px-8 text-white rounded-full focus:outline-[#B937FF]">
+        <button disabled={isLoading} className={`${isLoading ? "opacity-50" : ""} bg-[#B937FF] py-2 px-8 text-white rounded-full focus:outline-[#B937FF]`}>
           Sign In
         </button>
 
