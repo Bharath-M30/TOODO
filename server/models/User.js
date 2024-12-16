@@ -21,7 +21,6 @@ const UserSchema = new mongoose.Schema(
         id: {
           type: String, 
           required: true, 
-          unique: true,
           default: () => new mongoose.Types.ObjectId().toString(),
         },
         title: String,
