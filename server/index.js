@@ -20,8 +20,6 @@ const corsOptions = {
     credentials: true
   };
 
-app.get("/", (req,res) => res.send("Server is running"));
-
 //middlewares
 app.use(express.json());
 app.use(cookieParser()); 
@@ -33,4 +31,6 @@ app.use('/signin', signinRoute);
 app.use('/signup', signupRoute);
 app.use('/users/tasks', taskRoute);
 
-module.exports = app
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
