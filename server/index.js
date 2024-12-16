@@ -12,23 +12,12 @@ const PORT = process.env.PORT || 3000;
 dbConnect();
 
 //cors
-const allowedOrigins = [process.env.CLIENT_URL, process.env.ORIGIN_1,process.env.ORIGIN_2,
-  'http://127.0.0.1:5500',
-  'http://localhost:5173',
-  
-];
+const allowedOrigins = "*";
 
 const corsOptions = {
-  origin: (origin, callback) => {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-          callback(null, true)
-      } else {
-          callback(new Error('Not allowed by CORS'));
-      }
-  },
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET','POST','PUT','PATCH','DELETE'],
-  optionsSuccessStatus: 200
 }
 
 //middlewares
