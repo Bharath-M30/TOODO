@@ -4,7 +4,7 @@ import { TodoContext } from "../context/TodoContext";
 import axios from "axios";
 
 export default function Signin() {
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL || "https://toodo-backend.onrender.com";
   const navigate = useNavigate();
   const location = useLocation();
   const [errors, setErrors] = useState({});

@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function Task({title, status, id, isLoggedIn, updateDemoTask, deleteDemoTask}) {
 
-    const apiUrl = import.meta.env.VITE_API_URL;
+    const apiUrl = import.meta.env.VITE_API_URL || "https://toodo-backend.onrender.com";
     const {dbTasks, setDbTasks} = useContext(TodoContext);
 
     async function updateTask(id, status) {

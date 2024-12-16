@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export default function Home() {
 
-    const apiUrl = import.meta.env.VITE_API_URL ;
+    const apiUrl = import.meta.env.VITE_API_URL || "https://toodo-backend.onrender.com" ;
 
     const {user,setUser, isLoggedIn, setIsLoggedIn, dbTasks, setDbTasks, taskTitle, setTaskTitle, taskStatus, setTaskStatus,demoTasksArray, setDemoTasksArray,demoTaskTitle,setDemoTaskTitle ,demoTaskStatus, setDemoTaskStatus} = useContext(TodoContext);
     const {username} = useParams();

@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 export default function Signup() {
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL || "https://toodo-backend.onrender.com";
   const [errors, setErrors] = useState({});
   const [signUpMessage, setSignUpMessage] = useState("");
   const navigate = useNavigate();
