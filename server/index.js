@@ -12,12 +12,24 @@ const PORT = process.env.PORT || 3000;
 dbConnect();
 
 //cors
+const allowedOrigins = [process.env.CLIENT_URL,
+  'https://toodo-mha1nqeki-bharath-ms-projects.vercel.app',
+  'http://127.0.0.1:5500',
+  'http://localhost:5173'
+];
+
 const corsOptions = {
-    origin: process.env.CLIENT_URL || "https://toodo-mha1nqeki-bharath-ms-projects.vercel.app",
-    methods: 'GET,POST,PUT,PATCH,DELETE', 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: false
-  };
+  origin: (origin, callback) => {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+          callback(null, true)
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  },
+  credentials: true,
+  methods: ['GET','POST','PUT','PATCH','DELETE'],
+  optionsSuccessStatus: 200
+}
 
 //middlewares
 app.use(express.json());
