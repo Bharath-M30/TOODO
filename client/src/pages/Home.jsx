@@ -15,7 +15,7 @@ export default function Home() {
         async function getTasks(){
             try {
                 if(username){
-                    const taskUser = await axios.post(`${apiUrl}/users/tasks`, user, {withCredentials:true});
+                    const taskUser = await axios.post(`${apiUrl}/users/tasks`, user);
                     setDbTasks(taskUser.data.tasks);
                 }
             } catch (error) {
@@ -27,7 +27,7 @@ export default function Home() {
 
     async function refreshTasks() {
         try {
-            const refreshedTasks = await axios.post(`${apiUrl}/users/tasks`, user, {withCredentials:true});
+            const refreshedTasks = await axios.post(`${apiUrl}/users/tasks`, user);
             setDbTasks(refreshedTasks.data.tasks);
         } catch (error) {
             console.error(error);
@@ -46,7 +46,7 @@ export default function Home() {
         if(isLoggedIn){
             try {
                 
-                const result = await axios.post(`${apiUrl}/users/tasks/${username}`, {title: taskTitle,status: taskStatus, username:user.username}, {withCredentials:true});
+                const result = await axios.post(`${apiUrl}/users/tasks/${username}`, {title: taskTitle,status: taskStatus, username:user.username});
                 console.log(result);
     
                 if(result.status == 201){

@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const app = express();
 const dbConnect = require("./db/dbConnect");
@@ -17,12 +16,11 @@ const corsOptions = {
     origin: process.env.CLIENT_URL || "https://toodo-mha1nqeki-bharath-ms-projects.vercel.app",
     methods: 'GET,POST,PUT,PATCH,DELETE', 
     allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: true
+    credentials: false
   };
 
 //middlewares
 app.use(express.json());
-app.use(cookieParser()); 
 app.use(cors(corsOptions));
 
 //routes
